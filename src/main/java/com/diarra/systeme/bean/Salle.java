@@ -28,6 +28,9 @@ public class Salle {
     @OneToMany(mappedBy = "salle", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Formation> formations = new ArrayList<>();
 
+    @OneToMany(mappedBy = "salle", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Remarque> remarques = new ArrayList<>();
+
     public Salle(){}
     public Long getId() {
         return id;

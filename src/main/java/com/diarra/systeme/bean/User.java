@@ -54,6 +54,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Formation> formations = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Remarque> remarques = new ArrayList<>();
+
 
     public long getId() {
         return id;
