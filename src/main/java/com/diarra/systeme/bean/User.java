@@ -1,13 +1,11 @@
 package com.diarra.systeme.bean;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -48,6 +46,12 @@ public class User {
 
     @JsonIgnore
     private String password;
+
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Formation> formations = new HashSet<>();
+
 
     public long getId() {
         return id;
