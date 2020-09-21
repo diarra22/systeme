@@ -5,14 +5,16 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-@AllArgsConstructor
 @Entity
 public class Salle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     private long numeroSalle;
 
@@ -23,10 +25,10 @@ public class Salle {
     private TypeSalle typeSalle;
 
 
-    @OneToMany(mappedBy = "salle", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Formation> formations = new HashSet<>();
+    @OneToMany(mappedBy = "salle", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Formation> formations = new ArrayList<>();
 
-
+    public Salle(){}
     public Long getId() {
         return id;
     }

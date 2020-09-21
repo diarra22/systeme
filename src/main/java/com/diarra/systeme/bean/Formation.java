@@ -1,6 +1,8 @@
 package com.diarra.systeme.bean;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,20 +19,16 @@ public class Formation {
     private String nomForm;
     private Date dateDebutForm;
     private Date dateFinForm;
+    public Formation(){}
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id", insertable = false, updatable = false)
     private User user;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "salleId", nullable = false)
+    @JoinColumn(name = "salleId", referencedColumnName = "id", insertable = false, updatable = false)
     private Salle salle;
-
-
-
-
 
 
 
